@@ -1,0 +1,3666 @@
+<sdf version='1.6'>
+  <world name='default'>
+    <light name='sun' type='directional'>
+      <cast_shadows>1</cast_shadows>
+      <pose frame=''>0 0 10 0 -0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.5 0.1 -0.9</direction>
+    </light>
+    <model name='ground_plane'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <surface>
+            <contact>
+              <collide_bitmask>65535</collide_bitmask>
+              <ode/>
+            </contact>
+            <friction>
+              <ode>
+                <mu>100</mu>
+                <mu2>50</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <gravity>0 0 -9.8</gravity>
+    <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
+    <atmosphere type='adiabatic'/>
+    <physics name='default_physics' default='0' type='ode'>
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+    <scene>
+      <ambient>0.4 0.4 0.4 1</ambient>
+      <background>0.7 0.7 0.7 1</background>
+      <shadows>1</shadows>
+    </scene>
+    <audio>
+      <device>default</device>
+    </audio>
+    <wind/>
+    <spherical_coordinates>
+      <surface_model>EARTH_WGS84</surface_model>
+      <latitude_deg>0</latitude_deg>
+      <longitude_deg>0</longitude_deg>
+      <elevation>0</elevation>
+      <heading_deg>0</heading_deg>
+    </spherical_coordinates>
+    <model name='my_model'>
+      <link name='bot_wall0'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://hallway/materials/scripts</uri>
+              <name>feature_3</name>
+            </script>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <link name='bot_wall1'>
+        <pose frame=''>0.2 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://hallway/materials/scripts</uri>
+              <name>feature_3</name>
+            </script>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <link name='bot_wall2'>
+        <pose frame=''>0.4 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.01</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://hallway/materials/scripts</uri>
+              <name>feature_3</name>
+            </script>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.01</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <link name='bot_wall3'>
+        <pose frame=''>0.6 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://hallway/materials/scripts</uri>
+              <name>feature_3</name>
+            </script>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <link name='bot_wall4'>
+        <pose frame=''>0.8 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://hallway/materials/scripts</uri>
+              <name>feature_3</name>
+            </script>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <link name='bot_wall5'>
+        <pose frame=''>1 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://hallway/materials/scripts</uri>
+              <name>feature_3</name>
+            </script>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <link name='bot_wall6'>
+        <pose frame=''>1.2 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.01</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://hallway/materials/scripts</uri>
+              <name>feature_3</name>
+            </script>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.01</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <link name='bot_wall7'>
+        <pose frame=''>1.4 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://hallway/materials/scripts</uri>
+              <name>feature_3</name>
+            </script>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <link name='bot_wall8'>
+        <pose frame=''>1.6 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://hallway/materials/scripts</uri>
+              <name>feature_3</name>
+            </script>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <link name='bot_wall9'>
+        <pose frame=''>1.8 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://hallway/materials/scripts</uri>
+              <name>feature_3</name>
+            </script>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <link name='bot_wall10'>
+        <pose frame=''>2 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.01</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://hallway/materials/scripts</uri>
+              <name>feature_3</name>
+            </script>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.01</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <link name='bot_wall11'>
+        <pose frame=''>2.2 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://hallway/materials/scripts</uri>
+              <name>feature_3</name>
+            </script>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <link name='bot_wall12'>
+        <pose frame=''>2.4 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://hallway/materials/scripts</uri>
+              <name>feature_3</name>
+            </script>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <link name='bot_wall13'>
+        <pose frame=''>2.6 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://hallway/materials/scripts</uri>
+              <name>feature_3</name>
+            </script>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <link name='bot_wall14'>
+        <pose frame=''>2.8 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.01</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://hallway/materials/scripts</uri>
+              <name>feature_3</name>
+            </script>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.01</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <link name='bot_wall15'>
+        <pose frame=''>3 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://hallway/materials/scripts</uri>
+              <name>feature_3</name>
+            </script>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <link name='bot_wall16'>
+        <pose frame=''>3.2 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://hallway/materials/scripts</uri>
+              <name>feature_3</name>
+            </script>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <link name='bot_wall17'>
+        <pose frame=''>3.4 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://hallway/materials/scripts</uri>
+              <name>feature_3</name>
+            </script>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <link name='bot_wall18'>
+        <pose frame=''>3.6 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.01</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://hallway/materials/scripts</uri>
+              <name>feature_3</name>
+            </script>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.01</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <link name='bot_wall19'>
+        <pose frame=''>3.8 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://hallway/materials/scripts</uri>
+              <name>feature_3</name>
+            </script>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <link name='bot_wall20'>
+        <pose frame=''>4 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://hallway/materials/scripts</uri>
+              <name>feature_3</name>
+            </script>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <link name='bot_wall21'>
+        <pose frame=''>4.2 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://hallway/materials/scripts</uri>
+              <name>feature_3</name>
+            </script>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <link name='bot_wall22'>
+        <pose frame=''>4.4 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.01</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://hallway/materials/scripts</uri>
+              <name>feature_3</name>
+            </script>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.01</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <link name='bot_wall23'>
+        <pose frame=''>4.6 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://hallway/materials/scripts</uri>
+              <name>feature_3</name>
+            </script>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <link name='bot_wall24'>
+        <pose frame=''>4.8 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://hallway/materials/scripts</uri>
+              <name>feature_3</name>
+            </script>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <link name='bot_wall25'>
+        <pose frame=''>5 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://hallway/materials/scripts</uri>
+              <name>feature_3</name>
+            </script>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <link name='bot_wall26'>
+        <pose frame=''>5.2 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.01</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://hallway/materials/scripts</uri>
+              <name>feature_3</name>
+            </script>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.01</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <link name='bot_wall27'>
+        <pose frame=''>5.4 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://hallway/materials/scripts</uri>
+              <name>feature_3</name>
+            </script>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <link name='bot_wall28'>
+        <pose frame=''>5.6 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://hallway/materials/scripts</uri>
+              <name>feature_3</name>
+            </script>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <link name='bot_wall29'>
+        <pose frame=''>5.8 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://hallway/materials/scripts</uri>
+              <name>feature_3</name>
+            </script>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <link name='bot_wall30'>
+        <pose frame=''>6 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.01</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://hallway/materials/scripts</uri>
+              <name>feature_3</name>
+            </script>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.01</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <link name='bot_wall31'>
+        <pose frame=''>6.2 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://hallway/materials/scripts</uri>
+              <name>feature_3</name>
+            </script>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <link name='bot_wall32'>
+        <pose frame=''>6.4 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://hallway/materials/scripts</uri>
+              <name>feature_3</name>
+            </script>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <link name='bot_wall33'>
+        <pose frame=''>6.6 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://hallway/materials/scripts</uri>
+              <name>feature_3</name>
+            </script>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <link name='bot_wall34'>
+        <pose frame=''>6.8 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.01</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://hallway/materials/scripts</uri>
+              <name>feature_3</name>
+            </script>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.01</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <link name='bot_wall35'>
+        <pose frame=''>7 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://hallway/materials/scripts</uri>
+              <name>feature_3</name>
+            </script>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <link name='bot_wall36'>
+        <pose frame=''>7.2 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://hallway/materials/scripts</uri>
+              <name>feature_3</name>
+            </script>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <link name='bot_wall37'>
+        <pose frame=''>7.4 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://hallway/materials/scripts</uri>
+              <name>feature_3</name>
+            </script>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <link name='bot_wall38'>
+        <pose frame=''>7.6 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.01</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://hallway/materials/scripts</uri>
+              <name>feature_3</name>
+            </script>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.01</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <link name='bot_wall39'>
+        <pose frame=''>7.8 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://hallway/materials/scripts</uri>
+              <name>feature_3</name>
+            </script>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <link name='bot_wall40'>
+        <pose frame=''>8 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://hallway/materials/scripts</uri>
+              <name>feature_3</name>
+            </script>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <link name='bot_wall41'>
+        <pose frame=''>8.2 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://hallway/materials/scripts</uri>
+              <name>feature_3</name>
+            </script>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <link name='bot_wall42'>
+        <pose frame=''>8.4 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.01</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://hallway/materials/scripts</uri>
+              <name>feature_3</name>
+            </script>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.01</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <link name='bot_wall43'>
+        <pose frame=''>8.6 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://hallway/materials/scripts</uri>
+              <name>feature_3</name>
+            </script>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <link name='bot_wall44'>
+        <pose frame=''>8.8 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://hallway/materials/scripts</uri>
+              <name>feature_3</name>
+            </script>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <link name='bot_wall45'>
+        <pose frame=''>9 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://hallway/materials/scripts</uri>
+              <name>feature_3</name>
+            </script>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <link name='bot_wall46'>
+        <pose frame=''>9.2 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.01</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://hallway/materials/scripts</uri>
+              <name>feature_3</name>
+            </script>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.01</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <link name='bot_wall47'>
+        <pose frame=''>9.4 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://hallway/materials/scripts</uri>
+              <name>feature_3</name>
+            </script>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <link name='bot_wall48'>
+        <pose frame=''>9.6 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://hallway/materials/scripts</uri>
+              <name>feature_3</name>
+            </script>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <link name='bot_wall49'>
+        <pose frame=''>9.8 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://hallway/materials/scripts</uri>
+              <name>feature_3</name>
+            </script>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <link name='bot_wall50'>
+        <pose frame=''>10 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.01</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://hallway/materials/scripts</uri>
+              <name>feature_3</name>
+            </script>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.05 2 0.01</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='joint0' type='fixed'>
+        <parent>bot_wall0</parent>
+        <child>bot_wall1</child>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+      </joint>
+      <joint name='joint1' type='fixed'>
+        <parent>bot_wall1</parent>
+        <child>bot_wall2</child>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+      </joint>
+      <joint name='joint2' type='fixed'>
+        <parent>bot_wall2</parent>
+        <child>bot_wall3</child>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+      </joint>
+      <joint name='joint3' type='fixed'>
+        <parent>bot_wall3</parent>
+        <child>bot_wall4</child>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+      </joint>
+      <joint name='joint4' type='fixed'>
+        <parent>bot_wall4</parent>
+        <child>bot_wall5</child>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+      </joint>
+      <joint name='joint5' type='fixed'>
+        <parent>bot_wall5</parent>
+        <child>bot_wall6</child>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+      </joint>
+      <joint name='joint6' type='fixed'>
+        <parent>bot_wall6</parent>
+        <child>bot_wall7</child>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+      </joint>
+      <joint name='joint7' type='fixed'>
+        <parent>bot_wall7</parent>
+        <child>bot_wall8</child>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+      </joint>
+      <joint name='joint8' type='fixed'>
+        <parent>bot_wall8</parent>
+        <child>bot_wall9</child>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+      </joint>
+      <joint name='joint9' type='fixed'>
+        <parent>bot_wall9</parent>
+        <child>bot_wall10</child>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+      </joint>
+      <joint name='joint10' type='fixed'>
+        <parent>bot_wall10</parent>
+        <child>bot_wall11</child>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+      </joint>
+      <joint name='joint11' type='fixed'>
+        <parent>bot_wall11</parent>
+        <child>bot_wall12</child>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+      </joint>
+      <joint name='joint12' type='fixed'>
+        <parent>bot_wall12</parent>
+        <child>bot_wall13</child>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+      </joint>
+      <joint name='joint13' type='fixed'>
+        <parent>bot_wall13</parent>
+        <child>bot_wall14</child>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+      </joint>
+      <joint name='joint14' type='fixed'>
+        <parent>bot_wall14</parent>
+        <child>bot_wall15</child>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+      </joint>
+      <joint name='joint15' type='fixed'>
+        <parent>bot_wall15</parent>
+        <child>bot_wall16</child>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+      </joint>
+      <joint name='joint16' type='fixed'>
+        <parent>bot_wall16</parent>
+        <child>bot_wall17</child>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+      </joint>
+      <joint name='joint17' type='fixed'>
+        <parent>bot_wall17</parent>
+        <child>bot_wall18</child>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+      </joint>
+      <joint name='joint18' type='fixed'>
+        <parent>bot_wall18</parent>
+        <child>bot_wall19</child>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+      </joint>
+      <joint name='joint19' type='fixed'>
+        <parent>bot_wall19</parent>
+        <child>bot_wall20</child>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+      </joint>
+      <joint name='joint20' type='fixed'>
+        <parent>bot_wall20</parent>
+        <child>bot_wall21</child>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+      </joint>
+      <joint name='joint21' type='fixed'>
+        <parent>bot_wall21</parent>
+        <child>bot_wall22</child>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+      </joint>
+      <joint name='joint22' type='fixed'>
+        <parent>bot_wall22</parent>
+        <child>bot_wall23</child>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+      </joint>
+      <joint name='joint23' type='fixed'>
+        <parent>bot_wall23</parent>
+        <child>bot_wall24</child>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+      </joint>
+      <joint name='joint24' type='fixed'>
+        <parent>bot_wall24</parent>
+        <child>bot_wall25</child>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+      </joint>
+      <joint name='joint25' type='fixed'>
+        <parent>bot_wall25</parent>
+        <child>bot_wall26</child>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+      </joint>
+      <joint name='joint26' type='fixed'>
+        <parent>bot_wall26</parent>
+        <child>bot_wall27</child>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+      </joint>
+      <joint name='joint27' type='fixed'>
+        <parent>bot_wall27</parent>
+        <child>bot_wall28</child>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+      </joint>
+      <joint name='joint28' type='fixed'>
+        <parent>bot_wall28</parent>
+        <child>bot_wall29</child>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+      </joint>
+      <joint name='joint29' type='fixed'>
+        <parent>bot_wall29</parent>
+        <child>bot_wall30</child>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+      </joint>
+      <joint name='joint30' type='fixed'>
+        <parent>bot_wall30</parent>
+        <child>bot_wall31</child>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+      </joint>
+      <joint name='joint31' type='fixed'>
+        <parent>bot_wall31</parent>
+        <child>bot_wall32</child>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+      </joint>
+      <joint name='joint32' type='fixed'>
+        <parent>bot_wall32</parent>
+        <child>bot_wall33</child>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+      </joint>
+      <joint name='joint33' type='fixed'>
+        <parent>bot_wall33</parent>
+        <child>bot_wall34</child>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+      </joint>
+      <joint name='joint34' type='fixed'>
+        <parent>bot_wall34</parent>
+        <child>bot_wall35</child>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+      </joint>
+      <joint name='joint35' type='fixed'>
+        <parent>bot_wall35</parent>
+        <child>bot_wall36</child>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+      </joint>
+      <joint name='joint36' type='fixed'>
+        <parent>bot_wall36</parent>
+        <child>bot_wall37</child>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+      </joint>
+      <joint name='joint37' type='fixed'>
+        <parent>bot_wall37</parent>
+        <child>bot_wall38</child>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+      </joint>
+      <joint name='joint38' type='fixed'>
+        <parent>bot_wall38</parent>
+        <child>bot_wall39</child>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+      </joint>
+      <joint name='joint39' type='fixed'>
+        <parent>bot_wall39</parent>
+        <child>bot_wall40</child>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+      </joint>
+      <joint name='joint40' type='fixed'>
+        <parent>bot_wall40</parent>
+        <child>bot_wall41</child>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+      </joint>
+      <joint name='joint41' type='fixed'>
+        <parent>bot_wall41</parent>
+        <child>bot_wall42</child>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+      </joint>
+      <joint name='joint42' type='fixed'>
+        <parent>bot_wall42</parent>
+        <child>bot_wall43</child>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+      </joint>
+      <joint name='joint43' type='fixed'>
+        <parent>bot_wall43</parent>
+        <child>bot_wall44</child>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+      </joint>
+      <joint name='joint44' type='fixed'>
+        <parent>bot_wall44</parent>
+        <child>bot_wall45</child>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+      </joint>
+      <joint name='joint45' type='fixed'>
+        <parent>bot_wall45</parent>
+        <child>bot_wall46</child>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+      </joint>
+      <joint name='joint46' type='fixed'>
+        <parent>bot_wall46</parent>
+        <child>bot_wall47</child>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+      </joint>
+      <joint name='joint47' type='fixed'>
+        <parent>bot_wall47</parent>
+        <child>bot_wall48</child>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+      </joint>
+      <joint name='joint48' type='fixed'>
+        <parent>bot_wall48</parent>
+        <child>bot_wall49</child>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+      </joint>
+      <joint name='joint49' type='fixed'>
+        <parent>bot_wall49</parent>
+        <child>bot_wall50</child>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+      </joint>
+      <pose frame=''>1.86187 -0.067911 0 0 -0 0</pose>
+    </model>
+    <model name='unit_box'>
+      <pose frame=''>3.12119 1.76078 0.5 0 -0 0</pose>
+      <link name='link'>
+        <inertial>
+          <mass>1</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>1 1 1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>1 1 1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='unit_box_0'>
+      <pose frame=''>9.72489 1.83194 0.5 0 -0 0</pose>
+      <link name='link'>
+        <inertial>
+          <mass>1</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>1 1 1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>1 1 1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='unit_sphere'>
+      <pose frame=''>6.57707 3.00137 0.5 0 -0 0</pose>
+      <link name='link'>
+        <inertial>
+          <mass>1</mass>
+          <inertia>
+            <ixx>0.1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.1</iyy>
+            <iyz>0</iyz>
+            <izz>0.1</izz>
+          </inertia>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <sphere>
+              <radius>0.5</radius>
+            </sphere>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <sphere>
+              <radius>0.5</radius>
+            </sphere>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='unit_cylinder'>
+      <pose frame=''>3.15082 -2.34302 0.5 0 -0 0</pose>
+      <link name='link'>
+        <inertial>
+          <mass>1</mass>
+          <inertia>
+            <ixx>0.145833</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.145833</iyy>
+            <iyz>0</iyz>
+            <izz>0.125</izz>
+          </inertia>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <cylinder>
+              <radius>0.5</radius>
+              <length>1</length>
+            </cylinder>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <cylinder>
+              <radius>0.5</radius>
+              <length>1</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='unit_sphere_0'>
+      <pose frame=''>10.3658 -2.37892 0.5 0 -0 0</pose>
+      <link name='link'>
+        <inertial>
+          <mass>1</mass>
+          <inertia>
+            <ixx>0.1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.1</iyy>
+            <iyz>0</iyz>
+            <izz>0.1</izz>
+          </inertia>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <sphere>
+              <radius>0.5</radius>
+            </sphere>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <sphere>
+              <radius>0.5</radius>
+            </sphere>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='unit_box_1'>
+      <pose frame=''>6.90831 -2.21209 0.5 0 -0 0</pose>
+      <link name='link'>
+        <inertial>
+          <mass>1</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>1 1 1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>1 1 1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='unit_cylinder_0'>
+      <pose frame=''>13.4787 -1.77654 0.5 0 -0 0</pose>
+      <link name='link'>
+        <inertial>
+          <mass>1</mass>
+          <inertia>
+            <ixx>0.145833</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.145833</iyy>
+            <iyz>0</iyz>
+            <izz>0.125</izz>
+          </inertia>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <cylinder>
+              <radius>0.5</radius>
+              <length>1</length>
+            </cylinder>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <cylinder>
+              <radius>0.5</radius>
+              <length>1</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <state world_name='default'>
+      <sim_time>59 819000000</sim_time>
+      <real_time>86 26924916</real_time>
+      <wall_time>1679423834 269658601</wall_time>
+      <iterations>59819</iterations>
+      <model name='ground_plane'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='my_model'>
+        <pose frame=''>1.86185 -0.067912 0.05 0 1e-06 0</pose>
+        <scale>1 1 1</scale>
+        <link name='bot_wall0'>
+          <pose frame=''>1.86185 -0.067912 0.05 0 1e-06 0</pose>
+          <velocity>1.4e-05 4e-06 0.000271 6.9e-05 0.000485 -1.1e-05</velocity>
+          <acceleration>0.042136 0.003751 0.503582 0.100249 0.808447 -0.010898</acceleration>
+          <wrench>0.042136 0.003751 0.503582 0 -0 0</wrench>
+        </link>
+        <link name='bot_wall1'>
+          <pose frame=''>2.06185 -0.067912 0.05 0 1e-06 0</pose>
+          <velocity>2.4e-05 -0 8e-05 9e-06 0.00049 0</velocity>
+          <acceleration>0.054646 0.002177 0.226953 0.033034 0.81899 -0.001217</acceleration>
+          <wrench>0.054646 0.002177 0.226953 0 -0 0</wrench>
+        </link>
+        <link name='bot_wall10'>
+          <pose frame=''>3.86185 -0.067912 0.049999 1e-06 1e-06 0</pose>
+          <velocity>4e-06 -3.6e-05 -0.000706 0.000649 0.000503 -1.8e-05</velocity>
+          <acceleration>0.022653 -0.042665 -0.849341 0.787352 0.828189 -0.018554</acceleration>
+          <wrench>0.022653 -0.042665 -0.849341 0 -0 0</wrench>
+        </link>
+        <link name='bot_wall11'>
+          <pose frame=''>4.06185 -0.067912 0.049999 1e-06 1e-06 0</pose>
+          <velocity>-0 -4.2e-05 -0.000856 0.000763 0.000454 -1.7e-05</velocity>
+          <acceleration>0.020536 -0.049347 -1.01005 0.916681 0.789858 -0.018529</acceleration>
+          <wrench>0.020536 -0.049347 -1.01005 0 -0 0</wrench>
+        </link>
+        <link name='bot_wall12'>
+          <pose frame=''>4.26185 -0.067912 0.049999 1e-06 1e-06 0</pose>
+          <velocity>-4e-06 -4.7e-05 -0.000965 0.000859 0.00039 -1.5e-05</velocity>
+          <acceleration>0.018295 -0.055445 -1.15168 1.03878 0.741809 -0.017934</acceleration>
+          <wrench>0.018295 -0.055445 -1.15168 0 -0 0</wrench>
+        </link>
+        <link name='bot_wall13'>
+          <pose frame=''>4.46185 -0.067912 0.049999 1e-06 1e-06 0</pose>
+          <velocity>-2e-06 -4.8e-05 -0.000921 0.000974 0.000313 -1.7e-05</velocity>
+          <acceleration>0.016553 -0.052339 -1.01322 1.05567 0.677556 -0.017191</acceleration>
+          <wrench>0.016553 -0.052339 -1.01322 0 -0 0</wrench>
+        </link>
+        <link name='bot_wall14'>
+          <pose frame=''>4.66185 -0.067912 0.049999 1e-06 -0 0</pose>
+          <velocity>-5e-06 -5e-05 -0.00099 0.001002 0.000237 -1.1e-05</velocity>
+          <acceleration>0.012243 -0.061768 -1.24867 1.21207 0.625102 -0.014901</acceleration>
+          <wrench>0.012243 -0.061768 -1.24867 0 -0 0</wrench>
+        </link>
+        <link name='bot_wall15'>
+          <pose frame=''>4.86185 -0.067912 0.049999 1e-06 -0 0</pose>
+          <velocity>-3e-06 -5.2e-05 -0.001026 0.001052 0.000151 -1.1e-05</velocity>
+          <acceleration>0.012292 -0.068267 -1.41617 1.37139 0.545684 -0.014904</acceleration>
+          <wrench>0.012292 -0.068267 -1.41617 0 -0 0</wrench>
+        </link>
+        <link name='bot_wall16'>
+          <pose frame=''>5.06185 -0.067912 0.049999 1e-06 -0 0</pose>
+          <velocity>-3e-06 -5.2e-05 -0.001023 0.001035 5.9e-05 -6e-06</velocity>
+          <acceleration>0.015899 -0.078878 -1.59937 1.58105 0.445171 -0.006281</acceleration>
+          <wrench>0.015899 -0.078878 -1.59937 0 -0 0</wrench>
+        </link>
+        <link name='bot_wall17'>
+          <pose frame=''>5.26185 -0.067912 0.049999 1e-06 -0 0</pose>
+          <velocity>-8e-06 -4.8e-05 -0.001009 0.000994 -3.3e-05 -0</velocity>
+          <acceleration>0.010133 -0.080152 -1.74357 1.63653 0.325994 -0.000264</acceleration>
+          <wrench>0.010133 -0.080152 -1.74357 0 -0 0</wrench>
+        </link>
+        <link name='bot_wall18'>
+          <pose frame=''>5.46185 -0.067912 0.049999 1e-06 -0 0</pose>
+          <velocity>-1e-05 -4.4e-05 -0.000952 0.000932 -0.000122 3e-06</velocity>
+          <acceleration>0.003742 -0.079881 -1.78416 1.65463 0.19331 -0.00019</acceleration>
+          <wrench>0.003742 -0.079881 -1.78416 0 -0 0</wrench>
+        </link>
+        <link name='bot_wall19'>
+          <pose frame=''>5.66185 -0.067912 0.049999 1e-06 -0 0</pose>
+          <velocity>-1.1e-05 -4.1e-05 -0.000895 0.000853 -0.000205 7e-06</velocity>
+          <acceleration>0.002518 -0.084088 -1.83865 1.72191 0.058993 0.00603</acceleration>
+          <wrench>0.002518 -0.084088 -1.83865 0 -0 0</wrench>
+        </link>
+        <link name='bot_wall2'>
+          <pose frame=''>2.26185 -0.067912 0.05 0 1e-06 0</pose>
+          <velocity>1.8e-05 -1e-06 3.6e-05 4.2e-05 0.000488 -9e-06</velocity>
+          <acceleration>0.043879 -0.0008 0.132266 0.068159 0.815625 -0.009758</acceleration>
+          <wrench>0.043879 -0.0008 0.132266 0 -0 0</wrench>
+        </link>
+        <link name='bot_wall20'>
+          <pose frame=''>5.86185 -0.067912 0.049999 1e-06 -0 0</pose>
+          <velocity>-9e-06 -3.9e-05 -0.000779 0.000772 -0.000276 5e-06</velocity>
+          <acceleration>0.001007 -0.089071 -1.80355 1.77948 -0.074646 0.004784</acceleration>
+          <wrench>0.001007 -0.089071 -1.80355 0 -0 0</wrench>
+        </link>
+        <link name='bot_wall21'>
+          <pose frame=''>6.06185 -0.067912 0.049999 1e-06 -0 0</pose>
+          <velocity>-9e-06 -2.6e-05 -0.000651 0.000658 -0.000332 8e-06</velocity>
+          <acceleration>-0.003383 -0.073176 -1.61206 1.59714 -0.197313 0.009198</acceleration>
+          <wrench>-0.003383 -0.073176 -1.61206 0 -0 0</wrench>
+        </link>
+        <link name='bot_wall22'>
+          <pose frame=''>6.26185 -0.067912 0.049999 1e-06 -0 0</pose>
+          <velocity>-1.1e-05 -2.4e-05 -0.000496 0.000531 -0.000366 9e-06</velocity>
+          <acceleration>-0.007238 -0.070482 -1.4745 1.47581 -0.294326 0.010228</acceleration>
+          <wrench>-0.007238 -0.070482 -1.4745 0 -0 0</wrench>
+        </link>
+        <link name='bot_wall23'>
+          <pose frame=''>6.46185 -0.067912 0.05 0 -0 0</pose>
+          <velocity>-1.1e-05 -2e-05 -0.000369 0.000392 -0.000375 7e-06</velocity>
+          <acceleration>-0.011028 -0.070876 -1.39045 1.41677 -0.367456 0.007377</acceleration>
+          <wrench>-0.011028 -0.070876 -1.39045 0 -0 0</wrench>
+        </link>
+        <link name='bot_wall24'>
+          <pose frame=''>6.66185 -0.067912 0.05 -0 -0 -0</pose>
+          <velocity>-1.8e-05 3e-06 7.7e-05 -5.1e-05 -0.000368 0</velocity>
+          <acceleration>-0.021587 -0.047504 -0.913682 0.950072 -0.427866 0.000351</acceleration>
+          <wrench>-0.021587 -0.047504 -0.913682 0 -0 0</wrench>
+        </link>
+        <link name='bot_wall25'>
+          <pose frame=''>6.86185 -0.067912 0.05 -0 -0 -0</pose>
+          <velocity>-1.4e-05 2e-06 6.8e-05 -5e-05 -0.000323 2e-06</velocity>
+          <acceleration>-0.020762 -0.048301 -0.92332 0.96738 -0.445881 0.002684</acceleration>
+          <wrench>-0.020762 -0.048301 -0.92332 0 -0 0</wrench>
+        </link>
+        <link name='bot_wall26'>
+          <pose frame=''>7.06185 -0.067912 0.05 -0 -0 -0</pose>
+          <velocity>-1.4e-05 -1e-06 7.1e-05 -4.4e-05 -0.000281 2e-06</velocity>
+          <acceleration>-0.020616 -0.044329 -0.798996 0.875484 -0.454332 0.006545</acceleration>
+          <wrench>-0.020616 -0.044329 -0.798996 0 -0 0</wrench>
+        </link>
+        <link name='bot_wall27'>
+          <pose frame=''>7.26185 -0.067912 0.05 0 -0 0</pose>
+          <velocity>-1.5e-05 -3e-06 4.9e-05 -4e-05 -0.000243 1e-06</velocity>
+          <acceleration>-0.026344 -0.045209 -0.701958 0.808899 -0.448167 0.002223</acceleration>
+          <wrench>-0.026344 -0.045209 -0.701958 0 -0 0</wrench>
+        </link>
+        <link name='bot_wall28'>
+          <pose frame=''>7.46185 -0.067912 0.05 0 -0 0</pose>
+          <velocity>-1.4e-05 -4e-06 2.6e-05 -3.6e-05 -0.000211 -1e-06</velocity>
+          <acceleration>-0.027403 -0.034016 -0.434117 0.561224 -0.421 0.001972</acceleration>
+          <wrench>-0.027403 -0.034016 -0.434117 0 -0 0</wrench>
+        </link>
+        <link name='bot_wall29'>
+          <pose frame=''>7.66185 -0.067912 0.05 -0 -0 -0</pose>
+          <velocity>-1.1e-05 1e-06 1.6e-05 -1.7e-05 -0.000187 -2e-06</velocity>
+          <acceleration>-0.023933 -0.027846 -0.465155 0.556307 -0.389468 0.000972</acceleration>
+          <wrench>-0.023933 -0.027846 -0.465155 0 -0 0</wrench>
+        </link>
+        <link name='bot_wall3'>
+          <pose frame=''>2.46185 -0.067912 0.05 0 1e-06 0</pose>
+          <velocity>1.2e-05 -3e-06 -2.9e-05 7.4e-05 0.000492 -1e-05</velocity>
+          <acceleration>0.028378 -0.002409 -0.042714 0.070347 0.817095 -0.009672</acceleration>
+          <wrench>0.028378 -0.002409 -0.042714 0 -0 0</wrench>
+        </link>
+        <link name='bot_wall30'>
+          <pose frame=''>7.86185 -0.067912 0.05 -0 -0 -0</pose>
+          <velocity>-1.1e-05 -3e-06 -3e-06 1.5e-05 -0.000167 0</velocity>
+          <acceleration>-0.021109 -0.027579 -0.407497 0.506942 -0.357151 0.005238</acceleration>
+          <wrench>-0.021109 -0.027579 -0.407497 0 -0 0</wrench>
+        </link>
+        <link name='bot_wall31'>
+          <pose frame=''>8.06185 -0.067912 0.05 -0 -0 -0</pose>
+          <velocity>-5e-06 -6e-06 -5.1e-05 0.000115 -0.000154 3e-06</velocity>
+          <acceleration>-0.017933 -0.02255 -0.328307 0.458828 -0.319251 0.003826</acceleration>
+          <wrench>-0.017933 -0.02255 -0.328307 0 -0 0</wrench>
+        </link>
+        <link name='bot_wall32'>
+          <pose frame=''>8.26185 -0.067912 0.05 -0 -0 -0</pose>
+          <velocity>-6e-06 -5e-06 -7.3e-05 9.7e-05 -0.000148 1e-06</velocity>
+          <acceleration>-0.014692 -0.020339 -0.310896 0.387026 -0.275768 0.004739</acceleration>
+          <wrench>-0.014692 -0.020339 -0.310896 0 -0 0</wrench>
+        </link>
+        <link name='bot_wall33'>
+          <pose frame=''>8.46185 -0.067912 0.05 -0 -0 -0</pose>
+          <velocity>-6e-06 -5e-06 -7.2e-05 9e-05 -0.000148 2e-06</velocity>
+          <acceleration>-0.009356 -0.015054 -0.31694 0.295154 -0.232087 0.002583</acceleration>
+          <wrench>-0.009356 -0.015054 -0.31694 0 -0 0</wrench>
+        </link>
+        <link name='bot_wall34'>
+          <pose frame=''>8.66185 -0.067912 0.05 -0 -0 -0</pose>
+          <velocity>-7e-06 -4e-06 -5.7e-05 8.2e-05 -0.000149 2e-06</velocity>
+          <acceleration>-0.008366 -0.012707 -0.28763 0.243165 -0.183668 0.004381</acceleration>
+          <wrench>-0.008366 -0.012707 -0.28763 0 -0 0</wrench>
+        </link>
+        <link name='bot_wall35'>
+          <pose frame=''>8.86185 -0.067912 0.05 -0 -0 -0</pose>
+          <velocity>-6e-06 -3e-06 -5.4e-05 6.5e-05 -0.00015 1e-06</velocity>
+          <acceleration>-0.004217 -0.008245 -0.287263 0.164701 -0.126579 0.002111</acceleration>
+          <wrench>-0.004217 -0.008245 -0.287263 0 -0 0</wrench>
+        </link>
+        <link name='bot_wall36'>
+          <pose frame=''>9.06185 -0.067913 0.05 0 -0 0</pose>
+          <velocity>-6e-06 -1e-06 -1.7e-05 2.3e-05 -0.000151 2e-06</velocity>
+          <acceleration>-0.001425 0.001291 -0.140649 -0.024751 -0.068669 0.001999</acceleration>
+          <wrench>-0.001425 0.001291 -0.140649 0 -0 0</wrench>
+        </link>
+        <link name='bot_wall37'>
+          <pose frame=''>9.26185 -0.067913 0.05 -0 -0 -0</pose>
+          <velocity>-7e-06 0 1.7e-05 -5e-06 -0.000147 0</velocity>
+          <acceleration>0.000549 0.003962 -0.181855 -0.07926 0.010923 2e-06</acceleration>
+          <wrench>0.000549 0.003962 -0.181855 0 -0 0</wrench>
+        </link>
+        <link name='bot_wall38'>
+          <pose frame=''>9.46185 -0.067913 0.05 -0 -0 -0</pose>
+          <velocity>-8e-06 -0 2.5e-05 -5e-06 -0.000142 1e-06</velocity>
+          <acceleration>0.003343 -0.000605 -0.261865 -0.015949 0.085967 -0.002283</acceleration>
+          <wrench>0.003343 -0.000605 -0.261865 0 -0 0</wrench>
+        </link>
+        <link name='bot_wall39'>
+          <pose frame=''>9.66185 -0.067913 0.05 -0 -0 -0</pose>
+          <velocity>-1e-05 -1e-06 -2.6e-05 3e-05 -0.000137 0</velocity>
+          <acceleration>0.003876 0.001859 -0.41325 -0.033211 0.159298 -0.000937</acceleration>
+          <wrench>0.003876 0.001859 -0.41325 0 -0 0</wrench>
+        </link>
+        <link name='bot_wall4'>
+          <pose frame=''>2.66185 -0.067912 0.05 0 1e-06 0</pose>
+          <velocity>1.4e-05 -6e-06 -8.4e-05 0.000111 0.000502 -1.2e-05</velocity>
+          <acceleration>0.036061 -0.006432 -0.100827 0.123441 0.816837 -0.012325</acceleration>
+          <wrench>0.036061 -0.006432 -0.100827 0 -0 0</wrench>
+        </link>
+        <link name='bot_wall40'>
+          <pose frame=''>9.86185 -0.067913 0.05 0 -0 0</pose>
+          <velocity>-8e-06 1e-06 1.9e-05 -1.5e-05 -0.000137 0</velocity>
+          <acceleration>0.010275 0.007034 -0.375178 -0.127527 0.220989 -5.2e-05</acceleration>
+          <wrench>0.010275 0.007034 -0.375178 0 -0 0</wrench>
+        </link>
+        <link name='bot_wall41'>
+          <pose frame=''>10.0618 -0.067913 0.05 0 -0 0</pose>
+          <velocity>-7e-06 1e-06 1.8e-05 -2.2e-05 -0.000135 0</velocity>
+          <acceleration>0.014406 -0.008527 -0.46617 0.170219 0.291932 -0.000211</acceleration>
+          <wrench>0.014406 -0.008527 -0.46617 0 -0 0</wrench>
+        </link>
+        <link name='bot_wall42'>
+          <pose frame=''>10.2618 -0.067913 0.05 0 -0 0</pose>
+          <velocity>-7e-06 0 2.6e-05 -2.2e-05 -0.000135 0</velocity>
+          <acceleration>0.015532 -0.017657 -0.648129 0.344909 0.356903 -0.006249</acceleration>
+          <wrench>0.015532 -0.017657 -0.648129 0 -0 0</wrench>
+        </link>
+        <link name='bot_wall43'>
+          <pose frame=''>10.4618 -0.067913 0.05 0 -0 0</pose>
+          <velocity>-7e-06 1e-06 1.9e-05 -1.7e-05 -0.000137 0</velocity>
+          <acceleration>0.020529 -0.029795 -0.856263 0.595902 0.40631 0.000213</acceleration>
+          <wrench>0.020529 -0.029795 -0.856263 0 -0 0</wrench>
+        </link>
+        <link name='bot_wall44'>
+          <pose frame=''>10.6618 -0.067913 0.05 0 -0 0</pose>
+          <velocity>-5e-06 -1e-06 1.6e-05 -1.9e-05 -0.000143 -1e-06</velocity>
+          <acceleration>0.024476 -0.037343 -1.13368 0.714226 0.441854 -0.000675</acceleration>
+          <wrench>0.024476 -0.037343 -1.13368 0 -0 0</wrench>
+        </link>
+        <link name='bot_wall45'>
+          <pose frame=''>10.8618 -0.067913 0.05 0 -0 0</pose>
+          <velocity>-7e-06 -0 -1e-06 1e-06 -0.000151 -0</velocity>
+          <acceleration>0.022982 -0.041315 -1.19114 0.826231 0.457715 2.8e-05</acceleration>
+          <wrench>0.022982 -0.041315 -1.19114 0 -0 0</wrench>
+        </link>
+        <link name='bot_wall46'>
+          <pose frame=''>11.0618 -0.067913 0.05 0 -0 0</pose>
+          <velocity>-5e-06 1e-06 2.1e-05 -1.1e-05 -0.000164 1e-06</velocity>
+          <acceleration>0.026195 -0.049501 -1.33897 0.992222 0.473684 -0.003788</acceleration>
+          <wrench>0.026195 -0.049501 -1.33897 0 -0 0</wrench>
+        </link>
+        <link name='bot_wall47'>
+          <pose frame=''>11.2618 -0.067913 0.05 0 -0 0</pose>
+          <velocity>2e-06 3e-06 -1.6e-05 -4.4e-05 -0.000178 -3e-06</velocity>
+          <acceleration>0.030537 -0.060857 -1.5423 1.23616 0.4822 0.001509</acceleration>
+          <wrench>0.030537 -0.060857 -1.5423 0 -0 0</wrench>
+        </link>
+        <link name='bot_wall48'>
+          <pose frame=''>11.4618 -0.067913 0.05 0 -0 0</pose>
+          <velocity>1e-06 2e-06 8e-06 -4.1e-05 -0.000196 0</velocity>
+          <acceleration>0.032801 -0.070491 -1.69767 1.41258 0.481086 0.001834</acceleration>
+          <wrench>0.032801 -0.070491 -1.69767 0 -0 0</wrench>
+        </link>
+        <link name='bot_wall49'>
+          <pose frame=''>11.6618 -0.067913 0.05 0 -0 0</pose>
+          <velocity>-5e-06 1e-06 3.9e-05 -3e-05 -0.000212 5e-06</velocity>
+          <acceleration>0.029336 -0.084081 -1.73851 1.67926 0.474479 0.005465</acceleration>
+          <wrench>0.029336 -0.084081 -1.73851 0 -0 0</wrench>
+        </link>
+        <link name='bot_wall5'>
+          <pose frame=''>2.86185 -0.067912 0.05 0 1e-06 0</pose>
+          <velocity>2.5e-05 2e-06 6.4e-05 -4.9e-05 0.000513 0</velocity>
+          <acceleration>0.040983 0.002082 0.055759 -0.041446 0.822465 -0.000219</acceleration>
+          <wrench>0.040983 0.002082 0.055759 0 -0 0</wrench>
+        </link>
+        <link name='bot_wall50'>
+          <pose frame=''>11.8618 -0.067913 0.05 0 -0 0</pose>
+          <velocity>-4e-06 2e-06 0.000109 -4e-05 -0.000225 3e-06</velocity>
+          <acceleration>0.030108 -0.079755 -1.83903 1.68193 0.474043 0.00028</acceleration>
+          <wrench>0.030108 -0.079755 -1.83903 0 -0 0</wrench>
+        </link>
+        <link name='bot_wall6'>
+          <pose frame=''>3.06185 -0.067912 0.05 0 1e-06 0</pose>
+          <velocity>1.5e-05 -9e-06 -9.5e-05 8.8e-05 0.000541 -1.2e-05</velocity>
+          <acceleration>0.033867 -0.011275 -0.134074 0.124224 0.848799 -0.013567</acceleration>
+          <wrench>0.033867 -0.011275 -0.134074 0 -0 0</wrench>
+        </link>
+        <link name='bot_wall7'>
+          <pose frame=''>3.26185 -0.067912 0.05 0 1e-06 0</pose>
+          <velocity>1.1e-05 -1.7e-05 -0.000273 0.000236 0.000555 -1.6e-05</velocity>
+          <acceleration>0.028999 -0.019989 -0.324809 0.286936 0.862628 -0.013372</acceleration>
+          <wrench>0.028999 -0.019989 -0.324809 0 -0 0</wrench>
+        </link>
+        <link name='bot_wall8'>
+          <pose frame=''>3.46185 -0.067912 0.05 0 1e-06 0</pose>
+          <velocity>9e-06 -2.1e-05 -0.000389 0.000424 0.000552 -1.9e-05</velocity>
+          <acceleration>0.027463 -0.024846 -0.461873 0.504074 0.862641 -0.015687</acceleration>
+          <wrench>0.027463 -0.024846 -0.461873 0 -0 0</wrench>
+        </link>
+        <link name='bot_wall9'>
+          <pose frame=''>3.66185 -0.067912 0.05 0 1e-06 0</pose>
+          <velocity>5e-06 -3e-05 -0.000563 0.000543 0.000537 -1.9e-05</velocity>
+          <acceleration>0.023916 -0.03538 -0.662024 0.64657 0.853085 -0.016106</acceleration>
+          <wrench>0.023916 -0.03538 -0.662024 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='unit_box'>
+        <pose frame=''>3.1212 1.76078 0.499995 0 1e-05 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>3.1212 1.76078 0.499995 0 1e-05 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0.010615 -0.006191 -9.78231 0.012424 0.021225 1.8e-05</acceleration>
+          <wrench>0.010615 -0.006191 -9.78231 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='unit_box_0'>
+        <pose frame=''>9.72489 1.83194 0.499995 -1e-05 -0 -0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>9.72489 1.83194 0.499995 -1e-05 -0 -0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0.004709 0.011055 -9.78158 -0.022108 0.009414 1e-06</acceleration>
+          <wrench>0.004709 0.011055 -9.78158 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='unit_box_1'>
+        <pose frame=''>6.90831 -2.21209 0.499995 -1e-05 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>6.90831 -2.21209 0.499995 -1e-05 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0.004709 0.011055 -9.78158 -0.022108 0.009414 1e-06</acceleration>
+          <wrench>0.004709 0.011055 -9.78158 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='unit_cylinder'>
+        <pose frame=''>3.15082 -2.34302 0.499993 -3e-06 -4e-06 -0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>3.15082 -2.34302 0.499993 -3e-06 -4e-06 -0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 -9.8 0 -0 0</acceleration>
+          <wrench>0 0 -9.8 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='unit_cylinder_0'>
+        <pose frame=''>13.4787 -1.77654 0.499997 3e-06 4e-06 -0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>13.4787 -1.77654 0.499997 3e-06 4e-06 -0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 -9.8 0 -0 0</acceleration>
+          <wrench>0 0 -9.8 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='unit_sphere'>
+        <pose frame=''>6.57707 3.00137 0.5 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>6.57707 3.00137 0.5 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='unit_sphere_0'>
+        <pose frame=''>10.3658 -2.37892 0.5 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>10.3658 -2.37892 0.5 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <light name='sun'>
+        <pose frame=''>0 0 10 0 -0 0</pose>
+      </light>
+    </state>
+    <gui fullscreen='0'>
+      <camera name='user_camera'>
+        <pose frame=''>-18.6993 6.39642 18.7166 0 0.587643 -0.187806</pose>
+        <view_controller>orbit</view_controller>
+        <projection_type>perspective</projection_type>
+      </camera>
+    </gui>
+  </world>
+</sdf>

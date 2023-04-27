@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<launch>
+	<!-- Robot pose -->
+	<arg name="x" default="0"/>
+	<arg name="y" default="0"/>
+	<arg name="z" default="0"/>
+	<arg name="roll" default="0"/>
+	<arg name="pitch" default="0"/>
+	<arg name="yaw" default="0"/>
+	<arg name="robot_name" default="clifford"/>
+        <arg name="frequency" default="0.125"/>
+        <arg name="count" default="0"/>
+
+  <arg name="world" default="$(find livox_laser_simulation)/worlds/shapes.world" />
+  <node
+    name="spawn_clifford"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args="-file $(find livox_laser_simulation)/urdf/clifford_velodyne.sdf -sdf -model clifford -z 0.2"
+    output="screen" />
+
+  <node pkg="rosbag" type="record" name="rosbag_record_diag" output="screen"
+    args="record -O /home/zhh/record/$(arg frequency)_$(arg count)_clifford_velodyne.bag /cliffordDrive /aft_mapped_path /gazebo/link_states /tf /clock /laser_odom_path /aft_mapped_to_init /gazebo_link_states_odom"
+  /> 
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+	<arg name="world_name" value="$(arg world)"/> <arg name="paused" 
+	value="false"/> <arg name="use_sim_time" value="true"/> <arg 
+	name="gui" value="true"/> <arg name="headless" value="false"/> <arg 
+	name="debug" value="false"/> <arg name="verbose" value="true"/>   
+  </include>
+
+
+
+  
+
+
+
+
+</launch>

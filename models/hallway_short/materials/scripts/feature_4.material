@@ -1,0 +1,14 @@
+material feature_4
+{
+  technique
+  {
+    pass
+    {
+      texture_unit
+      {
+        texture ../textures/Feature_4.png
+        scale 0.5 0.2
+      }
+    }
+  }
+}

@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<launch>
+	<!-- Robot pose -->
+	<arg name="x" default="0"/>
+	<arg name="y" default="0"/>
+	<arg name="z" default="0"/>
+	<arg name="roll" default="0"/>
+	<arg name="pitch" default="0"/>
+	<arg name="yaw" default="0"/>
+	<arg name="robot_name" default="atom"/>
+
+  <arg name="world" default="$(find livox_laser_simulation)/worlds/empty.world" />
+  <node
+    name="spawn_atom"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args="-file $(find livox_laser_simulation)/urdf/3d_gpu_lidar.sdf -sdf -model clifford -z 0.2"
+    output="screen" />
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+	<arg name="world_name" value="$(arg world)"/> <arg name="paused" 
+	value="false"/> <arg name="use_sim_time" value="true"/> <arg 
+	name="gui" value="true"/> <arg name="headless" value="false"/> <arg 
+	name="debug" value="false"/> <arg name="verbose" value="true"/>
+  </include>
+  
+
+  <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find livox_laser_simulation)/urdf/mid40_atom.xacro'" />
+
+
+
+
+
+  <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-urdf -model livox_lidar -param sensor_description" />
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find livox_laser_simulation)/rviz/livox_simulation.rviz"/>
+	    <!-- Send fake joint values-->
+    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+        <param name="use_gui" value="false"/>
+    </node>
+
+    <!-- Send robot states to tf -->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen"/>
+
+</launch>
