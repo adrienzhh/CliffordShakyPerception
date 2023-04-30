@@ -1,0 +1,37 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+  <model name="imu_gazebo">
+    <link name="link">
+      <pose>0 0 0 0 0 0</pose>
+      <inertial>
+        <mass>0.001</mass>
+        <inertia>
+          <ixx>0.000000166667</ixx>
+          <iyy>0.000000166667</iyy>
+          <izz>0.000000166667</izz>
+        </inertia>
+      </inertial>
+        <gravity>true</gravity>
+        <sensor name="imu_sensor" type="imu">
+          <always_on>true</always_on>
+          <parent>link</parent>
+          <update_rate>20</update_rate>
+          <visualize>true</visualize>
+          <topic>imu_gazebo</topic>
+          <plugin filename="libgazebo_ros_imu_sensor.so" name="imu_plugin">
+            <topicName>imu_gazebo</topicName>
+            <bodyName>imu_link</bodyName>
+            <updateRateHZ>10</updateRateHZ>
+            <gaussianNoise>0.0</gaussianNoise>
+            <xyzOffset>0 0 0</xyzOffset>
+            <rpyOffset>0 -0 0</rpyOffset>
+            <frameName>imu_link</frameName>
+            <initialOrientationAsReference>false</initialOrientationAsReference>
+
+          </plugin>
+          <pose>0 0 -0.3 0 0 0</pose>
+        </sensor>
+    
+    </link>
+  </model>
+</sdf>

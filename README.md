@@ -1,10 +1,10 @@
 # Clifford Gazebo Simulation
-Gazebo simulation package for livox running on CLifford Wheeled robots
+Gazebo simulation package for livox running on Clifford Wheeled robots
 
 ## Requirements
-- ROS(=Melodic)
-- Gazebo (= 9.x, http://gazebosim.org/)
-- Ubuntu(=18.04)
+- ROS(=Noetic)
+- Gazebo (= 11.x, http://gazebosim.org/)
+- Ubuntu(=20.04)
 
 
 ![](resources/clifford_robot.jpg)
