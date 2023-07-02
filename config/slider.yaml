@@ -1,0 +1,6 @@
+# type: "position_controllers/JointPositionController"
+# joint: slider_base
+type: velocity_controllers/JointVelocityController
+joint: slider_base
+pid: {p: 5.0, i: 0.000, d: .00}
+# pid: {p: 100.0, i: 0.01, d: 10.0  }

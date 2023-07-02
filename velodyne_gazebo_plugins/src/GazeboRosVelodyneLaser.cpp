@@ -1,7 +1,7 @@
 /*********************************************************************
  * Software License Agreement (BSD License)
  *
- *  Copyright (c) 2015-2018, Dataspeed Inc.
+ *  Copyright (c) 2015-2021, Dataspeed Inc.
  *  All rights reserved.
  *
  *  Redistribution and use in source and binary forms, with or without
@@ -33,13 +33,12 @@
  *********************************************************************/
 
 #include <velodyne_gazebo_plugins/GazeboRosVelodyneLaser.h>
-#include <velodyne_gazebo_plugins/gazebo_ros_utils.h>
+
 #include <algorithm>
 #include <assert.h>
 
 #include <gazebo/physics/World.hh>
 #include <gazebo/sensors/Sensor.hh>
-#include <gazebo/physics/HingeJoint.hh>
 #include <sdf/sdf.hh>
 #include <sdf/Param.hh>
 #include <gazebo/common/Exception.hh>
@@ -54,8 +53,9 @@
 #include <sensor_msgs/PointCloud2.h>
 
 #include <tf/tf.h>
-#include <tf/transform_listener.h>
-#include <ignition/math/Rand.hh>
+
+static_assert(GAZEBO_MAJOR_VERSION > 2, "Gazebo version is too old");
+
 #if GAZEBO_GPU_RAY
 #define RaySensor GpuRaySensor
 #define STR_Gpu  "Gpu"
@@ -113,13 +113,23 @@ void GazeboRosVelodyneLaser::Load(sensors::SensorPtr _parent, sdf::ElementPtr _s
     gzthrow("GazeboRosVelodyne" << STR_Gpu << "Laser controller requires a " << STR_Gpu << "Ray Sensor as its parent");
   }
 
-  robot_namespace_ =  GetRobotNamespace(_parent, _sdf, "3d_laser");
+  robot_namespace_ = "/";
+  if (_sdf->HasElement("robotNamespace")) {
+    robot_namespace_ = _sdf->GetElement("robotNamespace")->Get<std::string>();
+  }
 
   if (!_sdf->HasElement("frameName")) {
     ROS_INFO("Velodyne laser plugin missing <frameName>, defaults to /world");
     frame_name_ = "/world";
   } else {
     frame_name_ = _sdf->GetElement("frameName")->Get<std::string>();
+  }
+
+  if (!_sdf->HasElement("organize_cloud")) {
+    ROS_INFO("Velodyne laser plugin missing <organize_cloud>, defaults to false");
+    organize_cloud_ = false;
+  } else {
+    organize_cloud_ = _sdf->GetElement("organize_cloud")->Get<bool>();
   }
 
   if (!_sdf->HasElement("min_range")) {
@@ -169,17 +179,12 @@ void GazeboRosVelodyneLaser::Load(sensors::SensorPtr _parent, sdf::ElementPtr _s
 
   // Resolve tf prefix
   std::string prefix;
-  prefix =  tf::getPrefixParam(*nh_);
-  //nh_->getParam(std::string("tf_prefix"), prefix);
-
-  if (prefix.empty()) {
+  nh_->getParam(std::string("tf_prefix"), prefix);
+  if (robot_namespace_ != "/") {
     prefix = robot_namespace_;
   }
   boost::trim_right_if(prefix, boost::is_any_of("/"));
   frame_name_ = tf::resolve(prefix, frame_name_);
-  topic_name_ = tf::resolve(prefix, topic_name_);
-  ROS_INFO("Velodyne Laser Plugin (ns = %s)  <tf_prefix_>, set to \"%s\"",
-             robot_namespace_.c_str(), prefix.c_str());
 
   // Advertise publisher with a custom callback queue
   if (topic_name_ != "") {
@@ -271,11 +276,11 @@ void GazeboRosVelodyneLaser::OnScan(ConstLaserScanStampedPtr& _msg)
   const double MIN_INTENSITY = min_intensity_;
 
   // Populate message fields
-  const uint32_t POINT_STEP = 32;
+  const uint32_t POINT_STEP = 22;
   sensor_msgs::PointCloud2 msg;
   msg.header.frame_id = frame_name_;
   msg.header.stamp = ros::Time(_msg->time().sec(), _msg->time().nsec());
-  msg.fields.resize(5);
+  msg.fields.resize(6);
   msg.fields[0].name = "x";
   msg.fields[0].offset = 0;
   msg.fields[0].datatype = sensor_msgs::PointField::FLOAT32;
@@ -289,13 +294,17 @@ void GazeboRosVelodyneLaser::OnScan(ConstLaserScanStampedPtr& _msg)
   msg.fields[2].datatype = sensor_msgs::PointField::FLOAT32;
   msg.fields[2].count = 1;
   msg.fields[3].name = "intensity";
-  msg.fields[3].offset = 16;
+  msg.fields[3].offset = 12;
   msg.fields[3].datatype = sensor_msgs::PointField::FLOAT32;
   msg.fields[3].count = 1;
   msg.fields[4].name = "ring";
-  msg.fields[4].offset = 20;
+  msg.fields[4].offset = 16;
   msg.fields[4].datatype = sensor_msgs::PointField::UINT16;
   msg.fields[4].count = 1;
+  msg.fields[5].name = "time";
+  msg.fields[5].offset = 18;
+  msg.fields[5].datatype = sensor_msgs::PointField::FLOAT32;
+  msg.fields[5].count = 1;
   msg.data.resize(verticalRangeCount * rangeCount * POINT_STEP);
 
   int i, j;
@@ -310,7 +319,9 @@ void GazeboRosVelodyneLaser::OnScan(ConstLaserScanStampedPtr& _msg)
       // Ignore points that lay outside range bands or optionally, beneath a
       // minimum intensity level.
       if ((MIN_RANGE >= r) || (r >= MAX_RANGE) || (intensity < MIN_INTENSITY) ) {
-        continue;
+        if (!organize_cloud_) {
+          continue;
+        }
       }
 
       // Noise
@@ -336,32 +347,40 @@ void GazeboRosVelodyneLaser::OnScan(ConstLaserScanStampedPtr& _msg)
 
       // pAngle is rotated by yAngle:
       if ((MIN_RANGE < r) && (r < MAX_RANGE)) {
-        *((float*)(ptr + 0)) = r * cos(pAngle) * cos(yAngle);
-        *((float*)(ptr + 4)) = r * cos(pAngle) * sin(yAngle);
-#if GAZEBO_MAJOR_VERSION > 2
-        *((float*)(ptr + 8)) = r * sin(pAngle);
-#else
-        *((float*)(ptr + 8)) = -r * sin(pAngle);
-#endif
-        *((float*)(ptr + 16)) = intensity;
-#if GAZEBO_MAJOR_VERSION > 2
-        *((uint16_t*)(ptr + 20)) = j; // ring
-#else
-        *((uint16_t*)(ptr + 20)) = verticalRangeCount - 1 - j; // ring
-#endif
+        *((float*)(ptr + 0)) = r * cos(pAngle) * cos(yAngle); // x
+        *((float*)(ptr + 4)) = r * cos(pAngle) * sin(yAngle); // y
+        *((float*)(ptr + 8)) = r * sin(pAngle); // z
+        *((float*)(ptr + 12)) = intensity; // intensity
+        *((uint16_t*)(ptr + 16)) = j; // ring
+        *((float*)(ptr + 18)) = 0.0; // time
+        ptr += POINT_STEP;
+      } else if (organize_cloud_) {
+        *((float*)(ptr + 0)) = nanf(""); // x
+        *((float*)(ptr + 4)) = nanf(""); // y
+        *((float*)(ptr + 8)) = nanf(""); // x
+        *((float*)(ptr + 12)) = nanf(""); // intensity
+        *((uint16_t*)(ptr + 16)) = j; // ring
+        *((float*)(ptr + 18)) = 0.0; // time
         ptr += POINT_STEP;
       }
     }
   }
 
   // Populate message with number of valid points
+  msg.data.resize(ptr - msg.data.data()); // Shrink to actual size
   msg.point_step = POINT_STEP;
-  msg.row_step = ptr - msg.data.data();
-  msg.height = 1;
-  msg.width = msg.row_step / POINT_STEP;
   msg.is_bigendian = false;
-  msg.is_dense = true;
-  msg.data.resize(msg.row_step); // Shrink to actual size
+  if (organize_cloud_) {
+    msg.width = verticalRangeCount;
+    msg.height = msg.data.size() / POINT_STEP / msg.width;
+    msg.row_step = POINT_STEP * msg.width;
+    msg.is_dense = false;
+  } else {
+    msg.width = msg.data.size() / POINT_STEP;
+    msg.height = 1;
+    msg.row_step = msg.data.size();
+    msg.is_dense = true;
+  }
 
   // Publish output
   pub_.publish(msg);
