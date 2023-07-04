@@ -7,7 +7,7 @@
   <arg name="headless" default="false"/>
   <arg name="debug" default="false"/>
   <arg name="model" default="$(find livox_laser_simulation)/urdf/hans_bot.urdf.xacro"/>
-  <arg name="world" default="big_office_loop"/>
+  <arg name="world" default="big_office_turn"/>
 
   
   <!--node pkg="robot_pose_ekf" type="robot_pose_ekf" name="robot_pose_ekf">
