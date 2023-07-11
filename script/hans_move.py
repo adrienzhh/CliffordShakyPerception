@@ -33,7 +33,8 @@ class Mover:
     def pose_callback(self,msg):
         
         # print(len(msg.pose))
-        head_angle = msg.pose[11]
+        # head_angle = msg.pose[11]
+        head_angle = msg.pose[37]
         quaternion = (
         head_angle.orientation.x,
         head_angle.orientation.y,
@@ -57,7 +58,7 @@ class Mover:
         # print('cmd', sys.argv[1])
         time_0 = rospy.get_time()
         omega = 2 # float(sys.argv[1])# 0.125 # This value will change the speed of the oscillations
-
+        target_x = 5.0
 
         length = 5.0
         width = 6.0
@@ -65,6 +66,10 @@ class Mover:
             # angle_t = self.angle-angle_t1
             # print(time)
             time = rospy.get_time() - time_0
+
+            if self.pos_x > target_x:
+                self.vel_msg.linear.x = 0.0
+
             
             
             # if abs(time - 7) < 0.05:

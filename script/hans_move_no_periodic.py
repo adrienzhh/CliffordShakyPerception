@@ -65,7 +65,6 @@ class Mover:
             # angle_t = self.angle-angle_t1
             # print(time)
             time = rospy.get_time() - time_0
-            print(time)
             
             # if abs(time - 7) < 0.05:
             #     self.vel_msg.linear.x = 0.0
