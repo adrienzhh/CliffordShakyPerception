@@ -3,10 +3,6 @@ project(livox_laser_simulation)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 
-
-
-
-
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 -O3")
 
 set(CMAKE_CXX_STANDARD_LIBRARIES "-lstdc++")

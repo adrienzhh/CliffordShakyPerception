@@ -95,6 +95,7 @@ class Mover:
         target_x = 7.0 # m for distance travel 
         target_angle = np.radians(90)  # 90 degrees counterclockwise
         loop = 0
+        # omega = rospy.get_param('~omega')
 
         if len(sys.argv) > 1:
             try:
