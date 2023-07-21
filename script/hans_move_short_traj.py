@@ -31,28 +31,6 @@ class Mover:
         self.global_pose_sub = rospy.Subscriber('gazebo/link_states', LinkStates, callback=self.pose_callback)
         self.mover()
 
-        # self.time_data = []
-        # self.acceleration_data = []
-
-        #  # Additional argument for imu_callback
-        # extra_arg = None  # Replace with the appropriate value if needed
-
-        # # Initialize ROS node
-        # # rospy.init_node('imu_plot_node')
-
-        # # Subscribe to IMU topic
-        # rospy.Subscriber('/imu', Imu, lambda msg: self.imu_callback(msg, extra_arg), queue_size=1)
-
-        # # Initialize plot
-        # plt.figure()
-
-        # # Start animation
-        # ani = FuncAnimation(plt.gcf(), self.update_plot, interval=1000)
-        # plt.show()
-
-        # # Start ROS spin
-        # rospy.spin()
-
     def pose_callback(self, msg):
         head_angle = msg.pose[37]
         quaternion = (
@@ -66,22 +44,6 @@ class Mover:
         self.pos_z = head_angle.position.z
         euler = tf.transformations.euler_from_quaternion(quaternion)
         self.angle = euler[2]
-    
-    # # Callback function for processing IMU messages
-    # def imu_callback(self, msg, extra_arg):
-    #     # Extract linear acceleration in z-axis
-    #     linear_acceleration_z = msg.linear_acceleration.z
-    #     # Store timestamp and linear acceleration
-    #     self.time_data.append(rospy.Time.now().to_sec())
-    #     self.acceleration_data.append(linear_acceleration_z)
-
-    # def update_plot(self, frame):
-    #     plt.cla()
-    #     plt.plot(self.time_data, self.acceleration_data)
-    #     plt.axhline(9.8, color='red', linestyle='--', label='Gravity')
-    #     plt.xlabel('Time')
-    #     plt.ylabel('Linear Acceleration (z-axis)')
-    #     plt.title('IMU Data')
 
     def mover(self):
         self.vel_msg.linear.x = 1  # Linear velocity for forward movement

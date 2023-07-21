@@ -1,5 +1,6 @@
 <launch>
     <arg name="file_count" default="0"/>
+    <arg name="omega" default="0"/>
     <arg name="model" default="$(find livox_laser_simulation)/urdf/hans_bot.urdf.xacro"/>
 
 
@@ -50,7 +51,7 @@
 
     
     <node pkg="rosbag" type="record" name="rosbag_record_diag" output="screen"
-    args="record -O /home/zhh/record/2023_07_20/lio_sam_hans_imu_300hz_omega0_noise0_1_$(arg file_count).bag /pathToOdom /gazebo_link_states_odom /imu /odometry/imu"
+    args="record -O /home/zhh/record/2023_07_20/lio_sam_hans_omega$(arg omega)_noise0_1_$(arg file_count).bag /pathToOdom /gazebo_link_states_odom /imu /odometry/imu"
     />
 
 
