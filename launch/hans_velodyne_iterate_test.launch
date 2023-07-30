@@ -51,7 +51,7 @@
 
     
     <node pkg="rosbag" type="record" name="rosbag_record_diag" output="screen"
-    args="record -O /home/zhh/record/2023_07_20/lio_sam_hans_omega$(arg omega)_noise0_1_$(arg file_count).bag /pathToOdom /gazebo_link_states_odom /imu /odometry/imu"
+    args="record -O /home/zhh/record/2023_07_25/lio_sam_hans_omega$(arg omega)_noise0_1_$(arg file_count).bag /pathToOdom /gazebo_link_states_odom /imu /odometry/imu /lio_sam/mapping/odometry_incremental /odometry/imu_incremental /lio_sam/imu/path /lio_sam/mapping/odometry"
     />
 
 
