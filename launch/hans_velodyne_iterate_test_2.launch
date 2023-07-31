@@ -1,5 +1,7 @@
 <launch>
-    <arg name="model" default="$(find livox_laser_simulation)/urdf/hans_bot.urdf.xacro"/> 
+    <arg name="file_count" default="0"/>
+    <arg name="omega" default="0"/>
+    <arg name="model" default="$(find livox_laser_simulation)/urdf/hans_bot.urdf.xacro"/>
     <arg name="world" default="big_office_rich_feature"/>
 
     <include file="$(find livox_laser_simulation)/launch/gazebo.launch">
@@ -7,8 +9,6 @@
       <arg name="world" value="$(arg world)" />
     </include>
     
-
-  
     <rosparam command="load"
               file="$(find livox_laser_simulation)/config/joints.yaml"
               ns="hans_bot_joint_state_controller" />
@@ -25,9 +25,20 @@
     <rosparam command="load"
               file="$(find livox_laser_simulation)/config/h_wheels.yaml"
               ns="hans_bot_wheel_controller" />
+              
+    <!-- node name="mover_node" pkg="livox_laser_simulation" type="hans_move_short_traj.py" output="screen">
+     <param name="omega" value="0.0" />
+    </node -->
 
-    <!-- node name="imu_plot_node" pkg="livox_laser_simulation" type="imu_plot_real_time.py" output="screen"></node -->
+
+    <!-- node name="initial_node" pkg="livox_laser_simulation" type="hans_move_initial.py" output="screen">
+    </node -->
+
+    <node name="imu_plot_node" pkg="livox_laser_simulation" type="imu_plot_real_time.py" output="screen"></node>
     
+    <node pkg="rosbag" type="record" name="rosbag_record_diag" output="screen"
+    args="record -O /home/zhh/record/2023_07_30/lio_sam_hans_omega$(arg omega)_noise0_1_rich_feature_$(arg file_count).bag /pathToOdom /gazebo_link_states_odom /imu /odometry/imu /lio_sam/mapping/odometry_incremental /odometry/imu_incremental /lio_sam/imu/path /lio_sam/mapping/odometry"
+    />
 
     <node name="hans_bot_controller_spawner" pkg="controller_manager" type="spawner"
       args="hans_bot_joint_state_controller

@@ -27,6 +27,7 @@
               file="$(find livox_laser_simulation)/config/h_wheels.yaml"
               ns="hans_bot_wheel_controller" />
               
+
     <!-- Parameters -->
     <rosparam file="$(find lio_sam)/config/params.yaml" command="load" />
 
@@ -42,16 +43,17 @@
     <!--- Run Rviz-->
     <include file="$(find lio_sam)/launch/include/module_rviz.launch" />
 
-    <node name="mover_node" pkg="livox_laser_simulation" type="hans_move_short_traj.py" output="screen">
-     <param name="omega" value="0.0" />
-    </node>
+    <!-- node name="mover_node" pkg="livox_laser_simulation" type="hans_move_short_traj.py" output="screen">
+     <param name="omega" value="$(omega)" />
+     <param name="x_velocity" value="0.0" />
+    </node -->
 
     <!-- node name="imu_plot_node" pkg="livox_laser_simulation" type="imu_plot_real_time.py" output="screen"></node -->
     
 
     
     <node pkg="rosbag" type="record" name="rosbag_record_diag" output="screen"
-    args="record -O /home/zhh/record/2023_07_25/lio_sam_hans_omega$(arg omega)_noise0_1_$(arg file_count).bag /pathToOdom /gazebo_link_states_odom /imu /odometry/imu /lio_sam/mapping/odometry_incremental /odometry/imu_incremental /lio_sam/imu/path /lio_sam/mapping/odometry"
+    args="record -O /home/zhh/record/2023_07_30/lio_sam_hans_omega$(arg omega)_noise0_1_$(arg file_count).bag /pathToOdom /gazebo_link_states_odom /imu /odometry/imu /lio_sam/mapping/odometry_incremental /odometry/imu_incremental /lio_sam/imu/path /lio_sam/mapping/odometry"
     />
 
 

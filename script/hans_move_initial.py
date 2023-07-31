@@ -10,6 +10,7 @@ import matplotlib.pyplot as plt
 import sys
 import tf
 import imu_plot_real_time 
+import time
 
 class Mover:
     def __init__(self):
@@ -46,7 +47,7 @@ class Mover:
         self.angle = euler[2]
 
     def mover(self):
-        self.vel_msg.linear.x = 1  # Linear velocity for forward movement
+        self.vel_msg.linear.x = 0  # Linear velocity for forward movement
         self.vel_msg.angular.z = 0.0  # Angular velocity (zero for straight motion)
         self.head_pos_msg.data = 0.0
         self.head_ang_msg.data = 0.0
@@ -57,30 +58,13 @@ class Mover:
         target_x = 7.0 # m for distance travel 
         target_angle = np.radians(90)  # 90 degrees counterclockwise
         loop = 0
-        # omega = rospy.get_param('~omega')
-
-        if len(sys.argv) > 1:
-            try:
-                omega = float(sys.argv[1]) # (0.125) This value will change the speed of the oscillations
-                print("Omega:", omega)
-            except ValueError:
-                print("Invalid input. The first argument should be a number.")
-        else:
-            omega = 0.125 # 0.125 hz
-            print("No command-line argument provided.")
+        omega = 0
 
         while not rospy.is_shutdown():
             time = rospy.get_time() - time_0
-            # Check if the robot has reached the target x position
-            if self.is_move:
-                self.vel_msg.linear.x = 1  # Linear velocity for forward movement
-                self.vel_msg.angular.z = 0.0  # Angular velocity (zero for straight motion)
-                if self.pos_x > target_x:
-                    self.vel_msg.linear.x = 0
-                    rospy.signal_shutdown("Robot has reached the desired distance")
             # Rotating head
 
-            self.head_pos_msg.data = np.sin(omega*2*np.pi*time)
+            self.head_pos_msg.data = 0.15*np.sin(omega*2*np.pi*time)
             self.head_ang_msg.data = 0.436332*np.sin(omega*2*np.pi*time)
 
             # Publish the velocity and head position commands
@@ -88,12 +72,19 @@ class Mover:
             self.head_pos_pub.publish(self.head_pos_msg)
             self.slider_pos_pub.publish(self.head_pos_msg.data)
             self.head_ang_pub.publish(self.head_ang_msg)
+            # time.wait(1)
+            if time > 0.5:
+                rospy.signal_shutdown("Robot initialized")
             rate.sleep()
+            
+        
+        
         
         
 
 if __name__ == '__main__':
     try:
         Mover()
+        
     except rospy.ROSInterruptException:
         pass
