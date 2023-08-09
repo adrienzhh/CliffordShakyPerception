@@ -1,6 +1,10 @@
 <launch>
+    
     <arg name="model" default="$(find livox_laser_simulation)/urdf/hans_bot.urdf.xacro"/> 
-    <arg name="world" default="big_office_rich_feature"/>
+    <!-- arg name="world" default="big_office_rich_feature"/ -->
+    <arg name="world" default="big_office_with_roof"/>
+    
+    
 
     <include file="$(find livox_laser_simulation)/launch/gazebo.launch">
       <arg name="model" value="$(arg model)" />
@@ -26,7 +30,7 @@
               file="$(find livox_laser_simulation)/config/h_wheels.yaml"
               ns="hans_bot_wheel_controller" />
 
-    <!-- node name="imu_plot_node" pkg="livox_laser_simulation" type="imu_plot_real_time.py" output="screen"></node -->
+    <node name="imu_plot_node" pkg="livox_laser_simulation" type="imu_plot_real_time.py" output="screen"></node>
     
 
     <node name="hans_bot_controller_spawner" pkg="controller_manager" type="spawner"
@@ -36,7 +40,6 @@
             hans_bot_wheel_controller
             --shutdown-timeout 10"/>
             
-
     
 
     

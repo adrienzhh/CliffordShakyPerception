@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import math
 import rospy
 from sensor_msgs.msg import Imu
 import matplotlib.pyplot as plt
@@ -35,16 +36,19 @@ class IMU_Plot:
     def imu_callback(self, msg, extra_arg):
         # Extract linear acceleration in z-axis\
         linear_acceleration_z = msg.linear_acceleration.z
+        y = msg.linear_acceleration.y
+        x = msg.linear_acceleration.x
+        accerleration_mag = math.sqrt(linear_acceleration_z^2 + y^2 + x^2)
         # Store timestamp and linear acceleration
         self.time_data.append(rospy.Time.now().to_sec())
-        self.acceleration_data.append(linear_acceleration_z)
+        self.acceleration_data.append(accerleration_mag)
 
     def update_plot(self, frame):
         plt.cla()
         plt.plot(self.time_data, self.acceleration_data)
         plt.axhline(9.8, color='red', linestyle='--', label='Gravity')
         plt.xlabel('Time')
-        plt.ylabel('Linear Acceleration (z-axis)')
+        plt.ylabel('Acceleasd sa dasd ration Magnitutde')
         plt.title('IMU Data')
 
 if __name__ == '__main__':

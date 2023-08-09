@@ -162,7 +162,21 @@
         <topicName>imu</topicName>
         <bodyName>cam</bodyName>
         <updateRateHZ>300</updateRateHZ>
-        <gaussianNoise>0.1</gaussianNoise>
+        <bias>
+          <!-- IMU linear acceleration bias -->
+          <accel>
+            <x>0.00</x>
+            <y>0.00</y>
+            <z>0.00</z>
+          </accel>
+          <!-- IMU angular velocity bias -->
+          <rate>
+            <x>0.000</x>
+            <y>0.000</y>
+            <z>0.000</z>
+          </rate>
+        </bias>
+        <gaussianNoise>0.0</gaussianNoise>
         <xyzOffset>0 0 0</xyzOffset>
         <rpyOffset>0 0 0</rpyOffset>
         <frameName>cam</frameName>
