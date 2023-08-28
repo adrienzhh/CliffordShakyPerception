@@ -79,11 +79,11 @@ class Mover:
                     rospy.signal_shutdown("Robot has reached the desired distance")
             # Rotating head
 
-           # self.head_pos_msg.data = np.sin(omega*2*np.pi*time)
-           # self.head_ang_msg.data = 0.436332*np.sin(omega*2*np.pi*time)
+            self.head_pos_msg.data = np.sin(omega*2*np.pi*time)
+            self.head_ang_msg.data = 0.436332*np.sin(omega*2*np.pi*time)
 
-            self.head_pos_msg.data = 0
-            self.head_ang_msg.data = -(45*np.pi)/180
+#            self.head_pos_msg.data = 0
+           # self.head_ang_msg.data = -(45*np.pi)/180
 
             # Publish the velocity and head position commands
             self.robot_vel_pub.publish(self.vel_msg)
