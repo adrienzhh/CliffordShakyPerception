@@ -3,6 +3,7 @@
     <arg name="omega" default="0"/>
     <arg name="model" default="$(find livox_laser_simulation)/urdf/hans_bot.urdf.xacro"/>
     <!-- arg name="world" default="big_office_rich_feature"/-->
+    <arg name="record" default="True"/>
 
     <arg name="world" default="big_office_with_roof"/>
 
@@ -48,15 +49,5 @@
             hans_bot_head_controller
             hans_bot_wheel_controller
             --shutdown-timeout 10"/>
-            
-
-    
-
-    
-           
-
-
-
-
             
 </launch>

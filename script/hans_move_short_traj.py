@@ -20,7 +20,7 @@ class Mover:
         self.pos_y = 0.0
         self.pos_x = 0.0
         self.angle = 0.0
-        self.is_move = True
+        self.not_move = True
         rospy.init_node('Mover', anonymous=True)
         self.robot_vel_pub = rospy.Publisher('/hans_bot_wheel_controller/cmd_vel/', Twist, queue_size=10)
         self.slider_pos_pub = rospy.Publisher('/hans_bot_slider_controller/command/', Float64, queue_size=10)
@@ -31,7 +31,8 @@ class Mover:
         self.mover()
 
     def pose_callback(self, msg):
-        head_angle = msg.pose[37]
+        cam_link_index = msg.name.index("robot::cam")
+        head_angle = msg.pose[cam_link_index]
         quaternion = (
             head_angle.orientation.x,
             head_angle.orientation.y,
@@ -71,7 +72,7 @@ class Mover:
         while not rospy.is_shutdown():
             time = rospy.get_time() - time_0
             # Check if the robot has reached the target x position
-            if self.is_move:
+            if self.not_move:
                 self.vel_msg.linear.x = 1  # Linear velocity for forward movement
                 self.vel_msg.angular.z = 0.0  # Angular velocity (zero for straight motion)
                 if self.pos_x > target_x:

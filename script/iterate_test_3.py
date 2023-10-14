@@ -7,8 +7,7 @@ def launch_file():
     started = False
     stop = False 
     count = 0
-    omega = 0  # pitch frequency (hz)
-
+    omega = 1.5  # pitch frequency (hz)
     try: 
         while stop == False:
             if started == False:

@@ -4,15 +4,11 @@
     <!-- arg name="world" default="big_office_rich_feature"/ -->
     <arg name="world" default="big_office_with_roof"/>
     
-    
-
     <include file="$(find livox_laser_simulation)/launch/gazebo.launch">
       <arg name="model" value="$(arg model)" />
       <arg name="world" value="$(arg world)" />
     </include>
     
-
-  
     <rosparam command="load"
               file="$(find livox_laser_simulation)/config/joints.yaml"
               ns="hans_bot_joint_state_controller" />
@@ -39,14 +35,6 @@
             hans_bot_head_controller
             hans_bot_wheel_controller
             --shutdown-timeout 10"/>
-            
-    
-
-    
-           
-
-
-
 
             
 </launch>
